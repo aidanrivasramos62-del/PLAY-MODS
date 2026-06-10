@@ -15,7 +15,6 @@ background:radial-gradient(circle at top,#0a0a0a,#000);
 color:white;
 }
 
-/* HEADER */
 header{
 text-align:center;
 padding:60px 20px;
@@ -27,12 +26,8 @@ color:#00ff88;
 text-shadow:0 0 25px #00ff88;
 }
 
-.sub{
-color:#aaa;
-margin-top:10px;
-}
+.sub{color:#aaa;margin-top:10px;}
 
-/* SEARCH */
 .search{
 max-width:600px;
 margin:20px auto;
@@ -50,7 +45,6 @@ color:white;
 border:1px solid #222;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -60,7 +54,6 @@ max-width:1200px;
 margin:auto;
 }
 
-/* CARD */
 .card{
 background:rgba(255,255,255,0.05);
 border-radius:15px;
@@ -69,9 +62,7 @@ border:1px solid rgba(255,255,255,0.1);
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
-}
+.card:hover{transform:translateY(-5px);}
 
 .card img{
 width:100%;
@@ -79,21 +70,12 @@ height:160px;
 object-fit:cover;
 }
 
-.content{
-padding:15px;
-}
+.content{padding:15px;}
 
-.content h3{
-margin:0;
-color:#00ff88;
-}
+.content h3{color:#00ff88;margin:0;}
 
-.content p{
-color:#bbb;
-font-size:0.9rem;
-}
+.content p{color:#aaa;font-size:0.9rem;}
 
-/* BUTTON */
 .btn{
 width:100%;
 padding:12px;
@@ -103,14 +85,8 @@ border-radius:10px;
 cursor:pointer;
 font-weight:bold;
 background:linear-gradient(90deg,#00ff88,#00aaff);
-transition:0.3s;
 }
 
-.btn:hover{
-filter:brightness(1.2);
-}
-
-/* PROGRESS */
 .progress{
 height:6px;
 background:#222;
@@ -127,7 +103,6 @@ background:#00ff88;
 transition:0.2s;
 }
 
-/* TOAST */
 .toast{
 position:fixed;
 bottom:20px;
@@ -138,23 +113,27 @@ border-left:4px solid #00ff88;
 display:none;
 }
 
-/* SECTIONS */
 section{
-max-width:900px;
-margin:50px auto;
-padding:0 20px;
 text-align:center;
+padding:40px 20px;
+color:#aaa;
 }
 
-h2{
-color:#00ff88;
-}
+h2{color:#00ff88;}
 
-footer{
+/* MOD SECRETO */
+#secretMod{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#111;
+padding:20px;
+border:1px solid #00ff88;
+border-radius:15px;
+width:300px;
 text-align:center;
-padding:30px;
-color:#555;
-font-size:0.8rem;
 }
 </style>
 </head>
@@ -172,13 +151,12 @@ font-size:0.8rem;
 
 <div class="grid">
 
-<!-- CARD -->
 <div class="card">
 <img src="rblx.png">
 
 <div class="content">
 <h3>Roblox Mod</h3>
-<p>Funciones extra y mejoras visuales.</p>
+<p>Mejoras visuales y funciones extra.</p>
 
 <button class="btn" onclick="downloadMod(this)">
 Ver anuncio y descargar
@@ -194,38 +172,30 @@ Ver anuncio y descargar
 </div>
 
 <section>
-<h2>📌 Info</h2>
-<p style="color:#aaa">
-Todos los mods se desbloquean tras ver un anuncio corto.
-</p>
-</section>
-
-<section>
 <h2>❓ FAQ</h2>
-<p style="color:#aaa">
+<p>
 ✔ Gratis<br>
 ✔ Actualización semanal<br>
 ✔ Descargas externas
 </p>
 </section>
 
-<section>
-<h2>📞 Contacto</h2>
-<p style="color:#aaa">
-Email: aidanrivasramos62@gmail.com<br>
-Discord: maestro_gato122013
-</p>
-</section>
-
-<footer>
-Play Mods © 2026
-</footer>
-
 <div class="toast" id="toast"></div>
+
+<!-- MOD SECRETO JENNY -->
+<div id="secretMod">
+<h3>🟣 Jenny Mod</h3>
+<p>Mod secreto desbloqueado</p>
+<button class="btn" onclick="window.open('https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file','_blank')">
+Descargar Jenny Mod
+</button>
+</div>
 
 <script>
 
 let locked = false;
+let tabActive = true;
+let startTime = 0;
 
 function toast(msg){
 let t=document.getElementById("toast");
@@ -234,10 +204,30 @@ t.style.display="block";
 setTimeout(()=>t.style.display="none",2500);
 }
 
+document.addEventListener("visibilitychange",()=>{
+tabActive = !document.hidden;
+});
+
+/* ===== EASTER EGG JENNY ===== */
+let buffer = "";
+
+document.addEventListener("keydown",(e)=>{
+buffer += e.key.toLowerCase();
+if(buffer.includes("jenny")){
+document.getElementById("secretMod").style.display="block";
+toast("🟣 Jenny Mod desbloqueado");
+buffer="";
+}
+if(buffer.length > 20) buffer="";
+});
+
+/* ===== DESCARGA SEGURA ===== */
 function downloadMod(btn){
 
 if(locked) return;
 locked = true;
+
+startTime = Date.now();
 
 window.open("https://omg10.com/4/11120812","_blank");
 
@@ -251,6 +241,15 @@ bar.parentElement.style.display = "block";
 
 let interval = setInterval(()=>{
 
+if(!tabActive){
+clearInterval(interval);
+locked = false;
+btn.disabled = false;
+btn.innerText = "Ver anuncio y descargar";
+toast("❌ Descarga inválida");
+return;
+}
+
 time--;
 progress += 16.6;
 
@@ -261,6 +260,16 @@ if(time <= 0){
 
 clearInterval(interval);
 
+let real = (Date.now() - startTime)/1000;
+
+if(real < 6 || !tabActive){
+locked = false;
+btn.disabled = false;
+btn.innerText = "Ver anuncio y descargar";
+toast("❌ Descarga inválida");
+return;
+}
+
 btn.innerText = "Descargar APK";
 btn.disabled = false;
 
@@ -268,7 +277,7 @@ btn.onclick = () => {
 window.open("https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file","_blank");
 };
 
-toast("Descarga desbloqueada ✔");
+toast("✔ Desbloqueado");
 locked = false;
 }
 
