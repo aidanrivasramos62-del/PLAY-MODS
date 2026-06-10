@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona de Descargas - Prueba</title>
+    <style>
+        /* --- ESTILOS CSS --- */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #00ff88;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        .grid-juegos {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1000px;
+        }
+
+        .tarjeta-juego {
+            background-color: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .tarjeta-juego:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+        }
+
+        .tarjeta-juego h2 {
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .tarjeta-juego p {
+            color: #aaa;
+            font-size: 0.9rem;
+            height: 40px;
+        }
+
+        .btn-descargar {
+            background-color: #00ff88;
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .btn-descargar:hover {
+            background-color: #00cc6e;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Estilo para el aviso flotante (Toast) */
+        #aviso {
+            position: fixed;
+            bottom: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            border-left: 5px solid #00ff88;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: none;
+            font-weight: bold;
+            animation: fadin 0.5s;
+        }
+
+        @keyframes fadin {
+            from { bottom: 0; opacity: 0; }
+            to { bottom: 20px; opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Catálogo de Juegos (Modo Prueba)</h1>
+
+    <div class="grid-juegos">
+        
+        <div class="tarjeta-juego">
+            <h2>Minecraft</h2>
+            <p>Construye, explora y sobrevive en un mundo de bloques infinito.</p>
+            <button class="btn-descargar" onclick="simularDescarga('Minecraft')">Descargar</button>
+        </div>
+
+        <div class="tarjeta-juego">
+            <h2>Roblox</h2>
+            <p>El universo virtual definitivo para crear, compartir y ser lo que quieras.</p>
+            <button class="btn-descargar" onclick="simularDescarga('Roblox')">Descargar</button>
+        </div>
+
+        <div class="tarjeta-juego">
+            <h2>Free Fire</h2>
+            <p>Sobrevive en partidas de 10 minutos con acción Battle Royale intensa.</p>
+            <button class="btn-descargar" onclick="simularDescarga('Free Fire')">Descargar</button>
+        </div>
+
+    </div>
+
+    <div id="aviso"></div>
+
+    <script>
+        function simularDescarga(nombreJuego) {
+            // Log en la consola para los desarrolladores
+            console.log(`Petición de descarga para: ${nombreJuego}. Archivo bloqueado (Modo simulación).`);
+            
+            // Cogemos el elemento del aviso
+            const aviso = document.getElementById('aviso');
+            
+            // Le metemos el texto personalizado
+            aviso.innerText = `¡Prueba exitosa! Simulando descarga de ${nombreJuego}...`;
+            
+            // Lo hacemos visible
+            aviso.style.display = 'block';
+            
+            // Desaparece solo a los 3 segundos
+            setTimeout(() => {
+                aviso.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
