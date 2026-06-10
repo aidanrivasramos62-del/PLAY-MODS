@@ -9,330 +9,492 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-    --primary:#00ff88;
-    --secondary:#00c3ff;
-    --dark:#050505;
-    --card:rgba(255,255,255,.06);
-}
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
 }
 
 body{
-    font-family:'Orbitron',sans-serif;
-    min-height:100vh;
-    background:
-    radial-gradient(circle at top, rgba(0,255,136,.15), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(0,195,255,.15), transparent 40%),
-    #050505;
-    color:white;
-    overflow-x:hidden;
+background:#050505;
+color:white;
+overflow-x:hidden;
 }
 
 body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-    background-size:40px 40px;
-    pointer-events:none;
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top,#00ff8830,transparent 40%),
+radial-gradient(circle at bottom right,#00aaff30,transparent 40%);
+z-index:-1;
 }
 
 header{
-    text-align:center;
-    padding:80px 20px;
+text-align:center;
+padding:80px 20px;
 }
 
 .logo{
-    font-size:5rem;
-    font-weight:900;
-    color:var(--primary);
-    text-shadow:
-    0 0 10px var(--primary),
-    0 0 25px var(--primary),
-    0 0 50px var(--primary);
+font-size:5rem;
+font-weight:900;
+color:#00ff88;
+text-shadow:
+0 0 10px #00ff88,
+0 0 30px #00ff88,
+0 0 60px #00ff88;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{
+text-shadow:
+0 0 20px #00ff88,
+0 0 50px #00ff88,
+0 0 100px #00ff88;
+}
 }
 
 .sub{
-    margin-top:15px;
-    color:#ccc;
-    font-size:1.1rem;
+margin-top:15px;
+color:#bbb;
+font-size:1.1rem;
 }
 
 .stats{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-    margin-top:30px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:35px;
 }
 
 .stat{
-    background:var(--card);
-    backdrop-filter:blur(10px);
-    padding:15px 25px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.08);
+padding:15px 25px;
+border-radius:15px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.1);
 }
 
 .search{
-    max-width:600px;
-    margin:30px auto;
-    padding:0 20px;
+max-width:700px;
+margin:30px auto;
+padding:0 20px;
 }
 
 .search input{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:50px;
-    background:#111;
-    color:white;
-    outline:none;
-    font-size:1rem;
+width:100%;
+padding:18px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-size:1rem;
+outline:none;
+}
+
+.section-title{
+text-align:center;
+font-size:2rem;
+margin:50px 0 25px;
+color:#00ff88;
 }
 
 .grid{
-    max-width:1400px;
-    margin:auto;
-    padding:20px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+max-width:1400px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
 .card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    border-radius:20px;
-    overflow:hidden;
-    transition:.4s;
-    position:relative;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+overflow:hidden;
+transition:.3s;
+backdrop-filter:blur(10px);
 }
 
 .card:hover{
-    transform:translateY(-10px) scale(1.03);
-    box-shadow:0 0 40px rgba(0,255,136,.25);
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 0 30px rgba(0,255,136,.3);
 }
 
 .card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
+width:100%;
+height:180px;
+object-fit:cover;
 }
 
 .content{
-    padding:20px;
+padding:20px;
 }
 
 .content h2{
-    margin-bottom:10px;
+margin-bottom:10px;
 }
 
 .content p{
-    color:#bbb;
-    font-size:.9rem;
-    min-height:60px;
+color:#bbb;
+font-size:.9rem;
+}
+
+.game-info{
+margin-top:12px;
+font-size:.85rem;
+line-height:1.8;
+color:#ccc;
 }
 
 .btn{
-    margin-top:15px;
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    background:linear-gradient(90deg,var(--primary),var(--secondary));
-    font-weight:bold;
-    font-size:1rem;
+margin-top:15px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+font-size:1rem;
+background:linear-gradient(90deg,#00ff88,#00aaff);
 }
 
 .progress{
-    width:100%;
-    height:8px;
-    background:#222;
-    border-radius:20px;
-    margin-top:12px;
-    overflow:hidden;
-    display:none;
+width:100%;
+height:8px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+display:none;
+margin-top:12px;
 }
 
 .bar{
-    width:0%;
-    height:100%;
-    background:linear-gradient(90deg,var(--primary),var(--secondary));
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00ff88,#00aaff);
+}
+
+.news{
+max-width:1200px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.news-card{
+padding:20px;
+border-radius:15px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.faq{
+max-width:900px;
+margin:60px auto;
+padding:20px;
+}
+
+details{
+background:rgba(255,255,255,.05);
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+}
+
+summary{
+cursor:pointer;
+font-weight:bold;
+}
+
+.contact{
+max-width:800px;
+margin:60px auto;
+padding:20px;
+text-align:center;
+}
+
+.contact-box{
+padding:20px;
+background:rgba(255,255,255,.05);
+border-radius:15px;
+margin:10px 0;
+}
+
+.contact a{
+color:#00ff88;
+text-decoration:none;
 }
 
 .toast{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    background:#111;
-    border-left:5px solid var(--primary);
-    padding:15px 25px;
-    border-radius:10px;
-    display:none;
-    z-index:999;
+position:fixed;
+right:20px;
+bottom:20px;
+background:#111;
+padding:15px 25px;
+border-left:5px solid #00ff88;
+border-radius:10px;
+display:none;
+z-index:999;
 }
 
 footer{
-    text-align:center;
-    padding:50px 20px;
-    color:#666;
+margin-top:60px;
+padding:30px;
+text-align:center;
+color:#888;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:700px){
+
+.logo{
+font-size:3rem;
+}
+
+.stats{
+flex-direction:column;
+align-items:center;
+}
 }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">PLAY MODS</div>
-    <div class="sub">Mods • Juegos • Descargas • Comunidad</div>
 
-    <div class="stats">
-        <div class="stat">🎮 3 mods</div>
-        <div class="stat">⚡ Tenemos roblox minecraft y free fire!</div>
-        <div class="stat">🚀 1 Mod semanal</div>
-    </div>
+<div class="logo">PLAY MODS</div>
+
+<div class="sub">
+Los mejores mods para Android • Nuevo contenido cada semana
+</div>
+
+<div class="stats">
+<div class="stat">🎮 Mods Exclusivos</div>
+<div class="stat">🆕 1 Mod Semanal</div>
+<div class="stat">🚀 Mods Cada Semana</div>
+</div>
+
 </header>
 
 <div class="search">
-    <input type="text" id="search" placeholder="Buscar juego...">
+<input type="text" id="search" placeholder="Buscar mods...">
 </div>
 
-<div class="grid" id="games">
+<h2 class="section-title">📱 Mods Disponibles</h2>
 
-    <div class="card">
-        <img src="https://picsum.photos/500/300?1">
-        <div class="content">
-            <h2>Minecraft</h2>
-            <p>Construye mundos infinitos y juega con mods increíbles.</p>
+<div class="grid" id="mods">
 
-            <button class="btn" onclick="downloadGame(this,'Minecraft')">
-                Descargar
-            </button>
+<div class="card">
+<img src="https://picsum.photos/500/300?1">
+<div class="content">
+<h2>Minecraft Mod</h2>
+<p>Construcción, aventura y creatividad.</p>
 
-            <div class="progress">
-                <div class="bar"></div>
-            </div>
-        </div>
-    </div>
+<div class="game-info">
+📦 Tamaño: 245 MB<br>
+📅 Junio 2026<br>
+📱 Android
+</div>
 
-    <div class="card">
-        <img src="https://picsum.photos/500/300?2">
-        <div class="content">
-            <h2>Roblox</h2>
-            <p>Miles de experiencias creadas por la comunidad.</p>
+<button class="btn" onclick="downloadGame(this,'Minecraft Mod')">
+Descargar APK
+</button>
 
-            <button class="btn" onclick="downloadGame(this,'Roblox')">
-                Descargar
-            </button>
+<div class="progress">
+<div class="bar"></div>
+</div>
+</div>
+</div>
 
-            <div class="progress">
-                <div class="bar"></div>
-            </div>
-        </div>
-    </div>
+<div class="card">
+<img src="https://picsum.photos/500/300?2">
+<div class="content">
+<h2>Roblox Mod</h2>
+<p>Experiencias infinitas con mejoras.</p>
 
-    <div class="card">
-        <img src="https://picsum.photos/500/300?3">
-        <div class="content">
-            <h2>Free Fire</h2>
-            <p>Acción Battle Royale rápida y emocionante.</p>
+<div class="game-info">
+📦 Tamaño: 180 MB<br>
+📅 Junio 2026<br>
+📱 Android
+</div>
 
-            <button class="btn" onclick="downloadGame(this,'Free Fire')">
-                Descargar
-            </button>
+<button class="btn" onclick="downloadGame(this,'Roblox Mod')">
+Descargar APK
+</button>
 
-            <div class="progress">
-                <div class="bar"></div>
-            </div>
-        </div>
-    </div>
+<div class="progress">
+<div class="bar"></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/500/300?3">
+<div class="content">
+<h2>Free Fire Mod</h2>
+<p>Acción intensa y partidas rápidas.</p>
+
+<div class="game-info">
+📦 Tamaño: 350 MB<br>
+📅 Junio 2026<br>
+📱 Android
+</div>
+
+<button class="btn" onclick="downloadGame(this,'Free Fire Mod')">
+Descargar APK
+</button>
+
+<div class="progress">
+<div class="bar"></div>
+</div>
+</div>
+</div>
 
 </div>
 
-<div class="toast" id="toast"></div>
+<h2 class="section-title">📰 Novedades Semanales</h2>
+
+<div class="news">
+
+<div class="news-card">
+🚀 Nuevo contenido añadido cada semana.
+</div>
+
+<div class="news-card">
+📱 Más compatibilidad con Android.
+</div>
+
+<div class="news-card">
+🎮 Nuevos mods próximamente.
+</div>
+
+</div>
+
+<h2 class="section-title">❓ Preguntas Frecuentes</h2>
+
+<div class="faq">
+
+<details>
+<summary>¿Los mods son gratuitos?</summary>
+<p>Sí, actualmente son gratuitos.</p>
+</details>
+
+<details>
+<summary>¿Cada cuánto se actualiza?</summary>
+<p>Se añade contenido nuevo semanalmente.</p>
+</details>
+
+<details>
+<summary>¿Funciona en Android?</summary>
+<p>Sí, Play Mods está orientado a Android.</p>
+</details>
+
+</div>
+
+<h2 class="section-title">📞 Contacto</h2>
+
+<div class="contact">
+
+<div class="contact-box">
+📧 Correo<br>
+<a href="mailto:aidanrivasramos62@gmail.com">
+aidanrivasramos62@gmail.com
+</a>
+</div>
+
+<div class="contact-box">
+💬 Discord<br>
+maestro_gato122013
+</div>
+
+</div>
+
+<div id="toast" class="toast"></div>
 
 <footer>
-    © 2026 Play Mods - Plataforma Gamer
+© 2026 Play Mods<br>
+Nuevo contenido cada semana para Android
 </footer>
 
 <script>
 
-const buscador = document.getElementById("search");
+const buscador=document.getElementById("search");
 
 buscador.addEventListener("input",()=>{
 
-    const texto = buscador.value.toLowerCase();
+const texto=buscador.value.toLowerCase();
 
-    document.querySelectorAll(".card").forEach(card=>{
+document.querySelectorAll(".card").forEach(card=>{
 
-        const nombre =
-        card.querySelector("h2")
-        .textContent
-        .toLowerCase();
+const nombre=card.querySelector("h2")
+.innerText
+.toLowerCase();
 
-        card.style.display =
-        nombre.includes(texto)
-        ? "block"
-        : "none";
+card.style.display=
+nombre.includes(texto)
+? "block"
+: "none";
 
-    });
+});
 
 });
 
 function toast(msg){
 
-    const t = document.getElementById("toast");
+const t=document.getElementById("toast");
 
-    t.innerText = msg;
-    t.style.display = "block";
+t.innerText=msg;
+t.style.display="block";
 
-    setTimeout(()=>{
-        t.style.display = "none";
-    },3000);
+setTimeout(()=>{
+t.style.display="none";
+},3000);
 
 }
 
 function downloadGame(btn,name){
 
-    const progress =
-    btn.parentElement.querySelector(".progress");
+const progress=
+btn.parentElement.querySelector(".progress");
 
-    const bar =
-    btn.parentElement.querySelector(".bar");
+const bar=
+btn.parentElement.querySelector(".bar");
 
-    progress.style.display="block";
+progress.style.display="block";
 
-    let value = 0;
+let value=0;
 
-    const interval = setInterval(()=>{
+const interval=setInterval(()=>{
 
-        value += Math.random()*12;
+value+=Math.random()*12;
 
-        if(value >= 100){
+if(value>=100){
 
-            value = 100;
+value=100;
 
-            clearInterval(interval);
+clearInterval(interval);
 
-            toast("🚀 Descarga simulada completada: " + name);
+btn.innerText="Instalado ✓";
 
-            btn.innerText = "Instalado ✓";
-        }
-
-        bar.style.width = value + "%";
-
-    },150);
+toast("🚀 Simulación completada: " + name);
 
 }
+
+bar.style.width=value+"%";
+
+},150);
+
+}
+
 </script>
 
 </body>
