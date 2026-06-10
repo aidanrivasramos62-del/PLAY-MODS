@@ -28,32 +28,20 @@ text-shadow:0 0 25px #00ff88;
 
 .sub{color:#aaa;margin-top:10px;}
 
-.search{
-max-width:600px;
-margin:20px auto;
-padding:0 20px;
+section{
+max-width:1100px;
+margin:auto;
+padding:20px;
 }
 
-.search input{
-width:100%;
-padding:14px;
-border-radius:30px;
-border:none;
-outline:none;
-background:#111;
-color:white;
-border:1px solid #222;
-}
-
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:20px;
-padding:20px;
-max-width:1200px;
-margin:auto;
 }
 
+/* CARD */
 .card{
 background:rgba(255,255,255,0.05);
 border-radius:15px;
@@ -62,7 +50,9 @@ border:1px solid rgba(255,255,255,0.1);
 transition:0.3s;
 }
 
-.card:hover{transform:translateY(-5px);}
+.card:hover{
+transform:translateY(-5px);
+}
 
 .card img{
 width:100%;
@@ -72,10 +62,17 @@ object-fit:cover;
 
 .content{padding:15px;}
 
-.content h3{color:#00ff88;margin:0;}
+h2{
+color:#00ff88;
+text-align:center;
+margin-top:40px;
+}
 
-.content p{color:#aaa;font-size:0.9rem;}
+h3{color:#00ff88;margin:0;}
 
+p{color:#aaa;font-size:0.9rem;}
+
+/* BUTTON */
 .btn{
 width:100%;
 padding:12px;
@@ -87,53 +84,20 @@ font-weight:bold;
 background:linear-gradient(90deg,#00ff88,#00aaff);
 }
 
-.progress{
-height:6px;
-background:#222;
-border-radius:10px;
+.btn:hover{
+filter:brightness(1.2);
+}
+
+/* PAYPAL BOX */
+.paypal{
+text-align:center;
 margin-top:10px;
-overflow:hidden;
-display:none;
-}
-
-.bar{
-height:100%;
-width:0%;
-background:#00ff88;
-transition:0.2s;
-}
-
-.toast{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#111;
-padding:12px 16px;
-border-left:4px solid #00ff88;
-display:none;
-}
-
-section{
-text-align:center;
-padding:40px 20px;
 color:#aaa;
-}
-
-h2{color:#00ff88;}
-
-/* MOD SECRETO */
-#secretMod{
-display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+font-size:0.9rem;
 background:#111;
-padding:20px;
-border:1px solid #00ff88;
-border-radius:15px;
-width:300px;
-text-align:center;
+padding:10px;
+border-radius:10px;
+border:1px solid #222;
 }
 </style>
 </head>
@@ -145,9 +109,9 @@ text-align:center;
 <div class="sub">Mods seguros • Actualización semanal</div>
 </header>
 
-<div class="search">
-<input id="search" placeholder="Buscar mods...">
-</div>
+<!-- ROBLOX -->
+<section>
+<h2>🎮 Mods Roblox</h2>
 
 <div class="grid">
 
@@ -156,78 +120,79 @@ text-align:center;
 
 <div class="content">
 <h3>Roblox Mod</h3>
-<p>Mejoras visuales y funciones extra.</p>
+<p>Mejoras y funciones extra.</p>
 
-<button class="btn" onclick="downloadMod(this)">
+<button class="btn" onclick="startDownload(this)">
 Ver anuncio y descargar
 </button>
 
-<div class="progress">
-<div class="bar"></div>
-</div>
-
 </div>
 </div>
 
 </div>
-
-<section>
-<h2>❓ FAQ</h2>
-<p>
-✔ Gratis<br>
-✔ Actualización semanal<br>
-✔ Descargas externas
-</p>
 </section>
 
-<div class="toast" id="toast"></div>
+<!-- MINECRAFT -->
+<section>
+<h2>⛏ Mods para Minecraft</h2>
 
-<!-- MOD SECRETO JENNY -->
-<div id="secretMod">
-<h3>🟣 Jenny Mod</h3>
-<p>Mod secreto desbloqueado</p>
-<button class="btn" onclick="window.open('https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file','_blank')">
-Descargar Jenny Mod
+<div class="paypal">
+💳 PayPal: <b>aidanrivasramos62@gmail.com</b>
+</div>
+
+<div class="grid">
+
+<!-- ESSENTIAL -->
+<div class="card">
+<img src="https://i.imgur.com/5cX1b7Q.png">
+
+<div class="content">
+<h3>Essential Mod</h3>
+<p>Mod básico para mejorar experiencia.</p>
+<p><b>Precio:</b> 1$</p>
+
+<button class="btn">
+Comprar / Contactar
 </button>
 </div>
+</div>
+
+<!-- SIORES -->
+<div class="card">
+<img src="https://i.imgur.com/7yQZ1cA.png">
+
+<div class="content">
+<h3>Siores Mod</h3>
+<p>Funciones avanzadas para Minecraft.</p>
+<p><b>Precio:</b> 2$</p>
+
+<button class="btn">
+Comprar / Contactar
+</button>
+</div>
+</div>
+
+</div>
+</section>
 
 <script>
 
 let locked = false;
 let tabActive = true;
-let startTime = 0;
+let interval = null;
 
-function toast(msg){
-let t=document.getElementById("toast");
-t.innerText=msg;
-t.style.display="block";
-setTimeout(()=>t.style.display="none",2500);
-}
-
-document.addEventListener("visibilitychange",()=>{
+/* anti cambio de pestaña */
+document.addEventListener("visibilitychange", ()=>{
 tabActive = !document.hidden;
 });
 
-/* ===== EASTER EGG JENNY ===== */
-let buffer = "";
-
-document.addEventListener("keydown",(e)=>{
-buffer += e.key.toLowerCase();
-if(buffer.includes("jenny")){
-document.getElementById("secretMod").style.display="block";
-toast("🟣 Jenny Mod desbloqueado");
-buffer="";
-}
-if(buffer.length > 20) buffer="";
-});
-
-/* ===== DESCARGA SEGURA ===== */
-function downloadMod(btn){
+/* descarga roblox */
+function startDownload(btn){
 
 if(locked) return;
 locked = true;
 
-startTime = Date.now();
+clearInterval(interval);
 
 window.open("https://omg10.com/4/11120812","_blank");
 
@@ -236,17 +201,29 @@ btn.disabled = true;
 let time = 6;
 let progress = 0;
 
-let bar = btn.parentElement.querySelector(".bar");
-bar.parentElement.style.display = "block";
+let barContainer = document.createElement("div");
+barContainer.style.height="6px";
+barContainer.style.background="#222";
+barContainer.style.borderRadius="10px";
+barContainer.style.marginTop="10px";
+barContainer.style.overflow="hidden";
 
-let interval = setInterval(()=>{
+let bar = document.createElement("div");
+bar.style.height="100%";
+bar.style.width="0%";
+bar.style.background="#00ff88";
+
+barContainer.appendChild(bar);
+btn.parentElement.appendChild(barContainer);
+
+interval = setInterval(()=>{
 
 if(!tabActive){
 clearInterval(interval);
 locked = false;
 btn.disabled = false;
 btn.innerText = "Ver anuncio y descargar";
-toast("❌ Descarga inválida");
+alert("❌ Descarga inválida");
 return;
 }
 
@@ -260,24 +237,13 @@ if(time <= 0){
 
 clearInterval(interval);
 
-let real = (Date.now() - startTime)/1000;
-
-if(real < 6 || !tabActive){
-locked = false;
-btn.disabled = false;
-btn.innerText = "Ver anuncio y descargar";
-toast("❌ Descarga inválida");
-return;
-}
-
 btn.innerText = "Descargar APK";
 btn.disabled = false;
 
-btn.onclick = () => {
+btn.onclick = ()=>{
 window.open("https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file","_blank");
 };
 
-toast("✔ Desbloqueado");
 locked = false;
 }
 
