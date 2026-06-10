@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,348 +8,161 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Orbitron',sans-serif;
-}
-
 body{
+margin:0;
+font-family:'Orbitron',sans-serif;
 background:#050505;
 color:white;
-overflow-x:hidden;
-}
-
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at top,#00ff8830,transparent 40%),
-radial-gradient(circle at bottom right,#00aaff30,transparent 40%);
-z-index:-1;
 }
 
 header{
 text-align:center;
-padding:80px 20px;
+padding:70px 20px;
 }
 
 .logo{
-font-size:5rem;
-font-weight:900;
+font-size:4rem;
 color:#00ff88;
-text-shadow:
-0 0 10px #00ff88,
-0 0 30px #00ff88,
-0 0 60px #00ff88;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-50%{
-text-shadow:
-0 0 20px #00ff88,
-0 0 50px #00ff88,
-0 0 100px #00ff88;
-}
+text-shadow:0 0 20px #00ff88;
 }
 
 .sub{
-margin-top:15px;
 color:#bbb;
-font-size:1.1rem;
+margin-top:10px;
 }
 
 .stats{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:15px;
 flex-wrap:wrap;
-margin-top:35px;
+margin-top:25px;
 }
 
 .stat{
-padding:15px 25px;
-border-radius:15px;
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.1);
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:10px;
 }
 
 .search{
-max-width:700px;
-margin:30px auto;
+max-width:600px;
+margin:20px auto;
 padding:0 20px;
 }
 
 .search input{
 width:100%;
-padding:18px;
+padding:15px;
+border-radius:30px;
 border:none;
-border-radius:50px;
+outline:none;
 background:#111;
 color:white;
-font-size:1rem;
-outline:none;
-}
-
-.section-title{
-text-align:center;
-font-size:2rem;
-margin:50px 0 25px;
-color:#00ff88;
 }
 
 .grid{
-max-width:1400px;
+max-width:1200px;
 margin:auto;
-padding:20px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
 }
 
 .card{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:20px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
 overflow:hidden;
-transition:.3s;
-backdrop-filter:blur(10px);
-}
-
-.card:hover{
-transform:translateY(-8px) scale(1.03);
-box-shadow:0 0 30px rgba(0,255,136,.3);
+border:1px solid rgba(255,255,255,0.1);
 }
 
 .card img{
 width:100%;
-height:180px;
+height:160px;
 object-fit:cover;
 }
 
 .content{
-padding:20px;
-}
-
-.content h2{
-margin-bottom:10px;
-}
-
-.content p{
-color:#bbb;
-font-size:.9rem;
-}
-
-.game-info{
-margin-top:12px;
-font-size:.85rem;
-line-height:1.8;
-color:#ccc;
+padding:15px;
 }
 
 .btn{
-margin-top:15px;
 width:100%;
-padding:14px;
+padding:12px;
 border:none;
-border-radius:12px;
+border-radius:10px;
+background:linear-gradient(90deg,#00ff88,#00aaff);
 cursor:pointer;
 font-weight:bold;
-font-size:1rem;
-background:linear-gradient(90deg,#00ff88,#00aaff);
 }
 
 .progress{
-width:100%;
-height:8px;
+height:6px;
 background:#222;
-border-radius:20px;
+border-radius:10px;
 overflow:hidden;
 display:none;
-margin-top:12px;
+margin-top:10px;
 }
 
 .bar{
 height:100%;
 width:0%;
-background:linear-gradient(90deg,#00ff88,#00aaff);
-}
-
-.news{
-max-width:1200px;
-margin:auto;
-padding:20px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.news-card{
-padding:20px;
-border-radius:15px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-}
-
-.faq{
-max-width:900px;
-margin:60px auto;
-padding:20px;
-}
-
-details{
-background:rgba(255,255,255,.05);
-padding:15px;
-margin-bottom:10px;
-border-radius:10px;
-}
-
-summary{
-cursor:pointer;
-font-weight:bold;
-}
-
-.contact{
-max-width:800px;
-margin:60px auto;
-padding:20px;
-text-align:center;
-}
-
-.contact-box{
-padding:20px;
-background:rgba(255,255,255,.05);
-border-radius:15px;
-margin:10px 0;
-}
-
-.contact a{
-color:#00ff88;
-text-decoration:none;
+background:#00ff88;
 }
 
 .toast{
 position:fixed;
-right:20px;
 bottom:20px;
+right:20px;
 background:#111;
-padding:15px 25px;
-border-left:5px solid #00ff88;
-border-radius:10px;
+padding:15px;
+border-left:4px solid #00ff88;
 display:none;
-z-index:999;
 }
 
-footer{
-margin-top:60px;
-padding:30px;
+section{
+max-width:1000px;
+margin:60px auto;
+padding:0 20px;
+}
+
+h2{
 text-align:center;
-color:#888;
-border-top:1px solid rgba(255,255,255,.08);
-}
-
-@media(max-width:700px){
-
-.logo{
-font-size:3rem;
-}
-
-.stats{
-flex-direction:column;
-align-items:center;
-}
+color:#00ff88;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-
 <div class="logo">PLAY MODS</div>
-
-<div class="sub">
-Los mejores mods para Android • Nuevo contenido cada semana
-</div>
+<div class="sub">Mods para Android • 1 Mod semanal</div>
 
 <div class="stats">
-<div class="stat">🎮 Mods Exclusivos</div>
-<div class="stat">🆕 1 Mod Semanal</div>
-<div class="stat">🚀 Mods Cada Semana</div>
+<div class="stat">🎮 Mods</div>
+<div class="stat">🆕 Semanal</div>
+<div class="stat">🚀 Actualizado</div>
 </div>
-
 </header>
 
 <div class="search">
 <input type="text" id="search" placeholder="Buscar mods...">
 </div>
 
-<h2 class="section-title">📱 Mods Disponibles</h2>
-
-<div class="grid" id="mods">
+<div class="grid" id="grid">
 
 <div class="card">
 <img src="https://picsum.photos/500/300?1">
+
 <div class="content">
-<h2>Minecraft Mod</h2>
-<p>Construcción, aventura y creatividad.</p>
+<h3>Roblox Mod</h3>
+<p>Mejoras y funciones extra.</p>
 
-<div class="game-info">
-📦 Tamaño: 245 MB<br>
-📅 Junio 2026<br>
-📱 Android
-</div>
-
-<button class="btn" onclick="downloadGame(this,'Minecraft Mod')">
-Descargar APK
-</button>
-
-<div class="progress">
-<div class="bar"></div>
-</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://picsum.photos/500/300?2">
-<div class="content">
-<h2>Roblox Mod</h2>
-<p>Experiencias infinitas con mejoras.</p>
-
-<div class="game-info">
-📦 Tamaño: 180 MB<br>
-📅 Junio 2026<br>
-📱 Android
-</div>
-
-<button class="btn" onclick="downloadGame(this,'Roblox Mod')">
-Descargar APK
-</button>
-
-<div class="progress">
-<div class="bar"></div>
-</div>
-</div>
-</div>
-
-<div class="card">
-<img src="https://picsum.photos/500/300?3">
-<div class="content">
-<h2>Free Fire Mod</h2>
-<p>Acción intensa y partidas rápidas.</p>
-
-<div class="game-info">
-📦 Tamaño: 350 MB<br>
-📅 Junio 2026<br>
-📱 Android
-</div>
-
-<button class="btn" onclick="downloadGame(this,'Free Fire Mod')">
-Descargar APK
+<button class="btn" onclick="descargarRoblox(this)">
+Ver anuncio y descargar
 </button>
 
 <div class="progress">
@@ -361,142 +173,80 @@ Descargar APK
 
 </div>
 
-<h2 class="section-title">📰 Novedades Semanales</h2>
+<section>
+<h2>📰 Novedades</h2>
+<p style="text-align:center;color:#bbb;">
+Nuevo mod cada semana en Play Mods.
+</p>
+</section>
 
-<div class="news">
+<section>
+<h2>❓ FAQ</h2>
+<p style="text-align:center;color:#bbb;">
+¿Es gratis? Sí.<br>
+¿Se actualiza? Semanalmente.<br>
+</p>
+</section>
 
-<div class="news-card">
-🚀 Nuevo contenido añadido cada semana.
-</div>
+<section>
+<h2>📞 Contacto</h2>
+<p style="text-align:center;color:#bbb;">
+Correo: aidanrivasramos62@gmail.com<br>
+Discord: maestro_gato122013
+</p>
+</section>
 
-<div class="news-card">
-📱 Más compatibilidad con Android.
-</div>
-
-<div class="news-card">
-🎮 Nuevos mods próximamente.
-</div>
-
-</div>
-
-<h2 class="section-title">❓ Preguntas Frecuentes</h2>
-
-<div class="faq">
-
-<details>
-<summary>¿Los mods son gratuitos?</summary>
-<p>Sí, actualmente son gratuitos.</p>
-</details>
-
-<details>
-<summary>¿Cada cuánto se actualiza?</summary>
-<p>Se añade contenido nuevo semanalmente.</p>
-</details>
-
-<details>
-<summary>¿Funciona en Android?</summary>
-<p>Sí, Play Mods está orientado a Android.</p>
-</details>
-
-</div>
-
-<h2 class="section-title">📞 Contacto</h2>
-
-<div class="contact">
-
-<div class="contact-box">
-📧 Correo<br>
-<a href="mailto:aidanrivasramos62@gmail.com">
-aidanrivasramos62@gmail.com
-</a>
-</div>
-
-<div class="contact-box">
-💬 Discord<br>
-maestro_gato122013
-</div>
-
-</div>
-
-<div id="toast" class="toast"></div>
-
-<footer>
-© 2026 Play Mods<br>
-Nuevo contenido cada semana para Android
-</footer>
+<div class="toast" id="toast"></div>
 
 <script>
 
-const buscador=document.getElementById("search");
-
-buscador.addEventListener("input",()=>{
-
-const texto=buscador.value.toLowerCase();
-
-document.querySelectorAll(".card").forEach(card=>{
-
-const nombre=card.querySelector("h2")
-.innerText
-.toLowerCase();
-
-card.style.display=
-nombre.includes(texto)
-? "block"
-: "none";
-
-});
-
-});
-
 function toast(msg){
-
-const t=document.getElementById("toast");
-
+let t=document.getElementById("toast");
 t.innerText=msg;
 t.style.display="block";
-
-setTimeout(()=>{
-t.style.display="none";
-},3000);
-
+setTimeout(()=>t.style.display="none",3000);
 }
 
-function downloadGame(btn,name){
+function descargarRoblox(btn){
 
-const progress=
-btn.parentElement.querySelector(".progress");
+window.open("https://omg10.com/4/11120812","_blank");
 
-const bar=
-btn.parentElement.querySelector(".bar");
+btn.disabled=true;
 
-progress.style.display="block";
+let time=6;
 
-let value=0;
+btn.innerText="Espera "+time+"s";
 
-const interval=setInterval(()=>{
+let interval=setInterval(()=>{
 
-value+=Math.random()*12;
+time--;
+btn.innerText="Espera "+time+"s";
 
-if(value>=100){
-
-value=100;
+if(time<=0){
 
 clearInterval(interval);
 
-btn.innerText="Instalado ✓";
+btn.disabled=false;
 
-toast("🚀 Simulación completada: " + name);
+btn.innerText="Descargar APK";
+
+btn.onclick=()=>{
+
+window.open(
+"https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file",
+"_blank"
+);
+
+};
+
+toast("Descarga desbloqueada ✔");
 
 }
 
-bar.style.width=value+"%";
-
-},150);
-
+},1000);
 }
 
 </script>
 
 </body>
 </html>
-```
