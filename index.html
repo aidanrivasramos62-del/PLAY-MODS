@@ -207,30 +207,29 @@ t.style.display="block";
 setTimeout(()=>t.style.display="none",3000);
 }
 
+/* 🔧 FIX 6 SEGUNDOS REAL Y BLOQUEADO */
 function descargarRoblox(btn){
+
+let time = 6;
+
+btn.disabled = true;
+btn.innerText = "Espera " + time + "s";
 
 window.open("https://omg10.com/4/11120812","_blank");
 
-btn.disabled=true;
-
-let time=6;
-
-btn.innerText="Espera "+time+"s";
-
-let interval=setInterval(()=>{
+let interval = setInterval(()=>{
 
 time--;
-btn.innerText="Espera "+time+"s";
+btn.innerText = "Espera " + time + "s";
 
-if(time<=0){
+if(time <= 0){
 
 clearInterval(interval);
 
-btn.disabled=false;
+btn.disabled = false;
+btn.innerText = "Descargar APK";
 
-btn.innerText="Descargar APK";
-
-btn.onclick=()=>{
+btn.onclick = ()=>{
 
 window.open(
 "https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file",
