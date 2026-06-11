@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -8,26 +9,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--primary:#00ff88;
+--secondary:#00aaff;
+--bg:#050505;
+--card:#101010;
+--border:rgba(255,255,255,.08);
+}
+
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
 font-family:'Orbitron',sans-serif;
-background:#050505;
+background:var(--bg);
 color:white;
 }
 
 header{
 text-align:center;
-padding:70px 20px;
+padding:80px 20px 50px;
 }
 
 .logo{
 font-size:4rem;
-color:#00ff88;
-text-shadow:0 0 20px #00ff88;
+font-weight:900;
+color:var(--primary);
+text-shadow:0 0 20px rgba(0,255,136,.5);
 }
 
 .sub{
-color:#bbb;
+color:#aaa;
 margin-top:10px;
 }
 
@@ -40,86 +54,110 @@ margin-top:25px;
 }
 
 .stat{
-background:rgba(255,255,255,0.05);
-padding:15px;
+background:rgba(255,255,255,.04);
+border:1px solid var(--border);
+padding:12px 20px;
 border-radius:10px;
 }
 
 .search{
-max-width:600px;
+max-width:700px;
 margin:20px auto;
 padding:0 20px;
 }
 
 .search input{
 width:100%;
-padding:15px;
+padding:16px;
 border-radius:30px;
-border:none;
-outline:none;
+border:1px solid var(--border);
 background:#111;
 color:white;
+font-family:inherit;
+outline:none;
+}
+
+.search input:focus{
+border-color:var(--primary);
+}
+
+#resultCount{
+text-align:center;
+color:#888;
+margin-bottom:15px;
 }
 
 .grid{
 max-width:1200px;
 margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
 padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-border-radius:15px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
 overflow:hidden;
-border:1px solid rgba(255,255,255,0.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-4px);
 }
 
 .card img{
 width:100%;
-height:160px;
+height:180px;
 object-fit:cover;
 }
 
 .content{
-padding:15px;
+padding:18px;
+}
+
+.content h3{
+margin-top:0;
+}
+
+.content p{
+color:#aaa;
+line-height:1.5;
 }
 
 .btn{
 width:100%;
-padding:12px;
+padding:14px;
 border:none;
 border-radius:10px;
-background:linear-gradient(90deg,#00ff88,#00aaff);
-cursor:pointer;
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+font-family:inherit;
 font-weight:bold;
+cursor:pointer;
+}
+
+.btn:disabled{
+background:#333;
+color:#999;
+cursor:not-allowed;
 }
 
 .progress{
 height:6px;
 background:#222;
-border-radius:10px;
+border-radius:20px;
 overflow:hidden;
 display:none;
-margin-top:10px;
+margin-top:12px;
 }
 
 .bar{
 height:100%;
 width:0%;
-background:#00ff88;
-}
-
-.toast{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#111;
-padding:15px;
-border-left:4px solid #00ff88;
-display:none;
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+transition:.2s;
 }
 
 section{
@@ -130,36 +168,74 @@ padding:0 20px;
 
 h2{
 text-align:center;
-color:#00ff88;
+color:var(--primary);
+}
+
+.info{
+text-align:center;
+color:#bbb;
+line-height:1.8;
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#111;
+padding:15px 20px;
+border-left:4px solid var(--primary);
+display:none;
+z-index:1000;
+}
+
+footer{
+text-align:center;
+padding:40px 20px;
+color:#666;
+border-top:1px solid rgba(255,255,255,.05);
+margin-top:50px;
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <div class="logo">PLAY MODS</div>
-<div class="sub">Mods para Android • 1 Mod semanal</div>
+
+<div class="sub">
+Mods para Android • Actualizaciones frecuentes
+</div>
 
 <div class="stats">
 <div class="stat">🎮 Mods</div>
-<div class="stat">🆕 Semanal</div>
 <div class="stat">🚀 Actualizado</div>
+<div class="stat">🛡 Seguro</div>
 </div>
+
 </header>
 
 <div class="search">
-<input type="text" id="search" placeholder="Buscar mods...">
+<input id="search" type="text" placeholder="Buscar mods...">
 </div>
 
-<div class="grid" id="grid">
+<div id="resultCount">1 mod encontrado</div>
 
-<div class="card">
-<img src="rblx.png">
+<div class="grid">
+
+<div class="card" data-name="roblox mod">
+
+<img src="rblx.png" alt="Roblox Mod">
 
 <div class="content">
+
 <h3>Roblox Mod</h3>
-<p>Mejoras y funciones extra.</p>
+
+<p>
+Mejoras visuales y funciones extra.
+</p>
 
 <button class="btn" onclick="descargarRoblox(this)">
 Ver anuncio y descargar
@@ -168,68 +244,115 @@ Ver anuncio y descargar
 <div class="progress">
 <div class="bar"></div>
 </div>
+
 </div>
 </div>
 
 </div>
 
 <section>
+
 <h2>📰 Novedades</h2>
-<p style="text-align:center;color:#bbb;">
-Nuevo mod cada semana en Play Mods.
+
+<p class="info">
+Nuevo mod añadido regularmente en Play Mods.
 </p>
+
 </section>
 
 <section>
+
 <h2>❓ FAQ</h2>
-<p style="text-align:center;color:#bbb;">
+
+<p class="info">
 ¿Es gratis? Sí.<br>
-¿Se actualiza? Semanalmente.<br>
+¿Se actualiza? Sí.<br>
+¿Necesito cuenta? No.
 </p>
+
 </section>
 
 <section>
+
 <h2>📞 Contacto</h2>
-<p style="text-align:center;color:#bbb;">
+
+<p class="info">
 Correo: aidanrivasramos62@gmail.com<br>
 Discord: maestro_gato122013
 </p>
+
 </section>
+
+<footer>
+Play Mods © 2026
+</footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
 
 function toast(msg){
+
 let t=document.getElementById("toast");
+
 t.innerText=msg;
 t.style.display="block";
-setTimeout(()=>t.style.display="none",3000);
+
+setTimeout(()=>{
+t.style.display="none";
+},3000);
+
 }
 
-/* 🔧 FIX 6 SEGUNDOS REAL Y BLOQUEADO */
 function descargarRoblox(btn){
 
-let time = 6;
+if(btn.dataset.running) return;
 
-btn.disabled = true;
-btn.innerText = "Espera " + time + "s";
+btn.dataset.running="true";
 
-window.open("https://omg10.com/4/11120812","_blank");
+const totalTime=6;
+let timeLeft=totalTime;
 
-let interval = setInterval(()=>{
+const card=btn.parentElement;
 
-time--;
-btn.innerText = "Espera " + time + "s";
+const progress=
+card.querySelector(".progress");
 
-if(time <= 0){
+const bar=
+card.querySelector(".bar");
+
+progress.style.display="block";
+
+btn.disabled=true;
+
+window.open(
+"https://omg10.com/4/11120812",
+"_blank"
+);
+
+let interval=setInterval(()=>{
+
+timeLeft--;
+
+btn.innerText=
+"Espera "+timeLeft+"s";
+
+let percentage=
+((totalTime-timeLeft)/totalTime)*100;
+
+bar.style.width=
+percentage+"%";
+
+if(timeLeft<=0){
 
 clearInterval(interval);
 
-btn.disabled = false;
-btn.innerText = "Descargar APK";
+btn.disabled=false;
 
-btn.onclick = ()=>{
+btn.innerText=
+"Descargar APK";
+
+btn.onclick=()=>{
 
 window.open(
 "https://www.mediafire.com/file/od6nt3rf9tpzyyv/Delta-updated.apk/file",
@@ -238,12 +361,55 @@ window.open(
 
 };
 
-toast("Descarga desbloqueada ✔");
+delete btn.dataset.running;
+
+toast(
+"¡Descarga desbloqueada con éxito! ✔"
+);
 
 }
 
 },1000);
+
 }
+
+document
+.getElementById("search")
+.addEventListener("input",e=>{
+
+let q=
+e.target.value
+.toLowerCase()
+.trim();
+
+let cards=
+document.querySelectorAll(".card");
+
+let visible=0;
+
+cards.forEach(card=>{
+
+let name=
+card.dataset.name;
+
+if(name.includes(q)){
+card.style.display="block";
+visible++;
+}else{
+card.style.display="none";
+}
+
+});
+
+document
+.getElementById("resultCount")
+.innerText=
+visible+
+(visible===1
+?" mod encontrado"
+:" mods encontrados");
+
+});
 
 </script>
 
